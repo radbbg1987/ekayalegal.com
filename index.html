@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ekaya Legal - Bespoke Legal Services</title>
+    <style>
+        :root {
+            --primary-color: #2b2b2b;
+            --secondary-color: #8b7d65;
+            --accent-color: #a6876a;
+            --text-color: #333333;
+            --light-color: #f5f2e9;
+            --dark-color: #1a1a1a;
+            --border-color: #d0c8b0;
+            --font-primary: 'Georgia', serif;
+            --font-secondary: 'Times New Roman', serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-primary);
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--light-color);
+            letter-spacing: 0.3px;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--accent-color);
+            transition: color 0.3s ease;
+        }
+        
+        a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-secondary);
+            font-weight: normal;
+            line-height: 1.3;
+            color: var(--primary-color);
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--light-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-family: var(--font-secondary);
+            color: var(--primary-color);
+            letter-spacing: 1px;
+        }
+        
+        .logo span {
+            color: var(--secondary-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            color: var(--primary-color);
+            font-family: var(--font-secondary);
+            font-size: 16px;
+            padding: 5px 0;
+            position: relative;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            background: var(--accent-color);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(27, 27, 27, 0.7), rgba(27, 27, 27, 0.7)), url('/api/placeholder/1200/600') no-repeat center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: normal;
+            line-height: 1.2;
+            color: white;
+            letter-spacing: 2px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            font-weight: 300;
+            letter-spacing: 1px;
+            font-style: italic;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--accent-color);
+            color: white;
+            font-family: var(--font-secondary);
+            font-weight: normal;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover:before {
+            left: 0;
+        }
+        
+        .btn:hover {
+            background: var(--secondary-color);
+        }
+        
+        /* Decorative Elements */
+        .decorative-border {
+            height: 1px;
+            width: 80px;
+            background: var(--secondary-color);
+            margin: 0 auto 40px;
+        }
+        
+        .decorative-element {
+            font-size: 24px;
+            color: var(--secondary-color);
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 40px;
+            font-weight: normal;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 1px;
+            background: var(--secondary-color);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title p {
+            font-style: italic;
+            color: var(--secondary-color);
+            font-size: 18px;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .about-card {
+            background: var(--light-color);
+            padding: 30px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+        
+        .about-card:before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            bottom: 10px;
+            left: 10px;
+            border: 1px solid var(--border-color);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .about-card:hover:before {
+            opacity: 1;
+            top: 15px;
+            right: 15px;
+            bottom: 15px;
+            left: 15px;
+        }
+        
+        .about-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .about-card i {
+            font-size: 40px;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+        
+        .about-card h3 {
+            font-size: 26px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .about-card h3:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 1px;
+            background: var(--secondary-color);
+            bottom: 0;
+            left: 0;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background-color: var(--light-color);
+            position: relative;
+        }
+        
+        .services:before, .services:after {
+            content: '';
+            position: absolute;
+            height: 40px;
+            left: 0;
+            right: 0;
+            background-size: 40px 40px;
+            background-repeat: repeat-x;
+        }
+        
+        .services:before {
+            top: 0;
+            background-image: linear-gradient(45deg, var(--light-color) 25%, transparent 25%), 
+                              linear-gradient(-45deg, var(--light-color) 25%, transparent 25%);
+            background-position: 0 -40px;
+        }
+        
+        .services:after {
+            bottom: 0;
+            background-image: linear-gradient(45deg, var(--light-color) 25%, transparent 25%), 
+                              linear-gradient(-45deg, var(--light-color) 25%, transparent 25%);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 40px 30px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .service-card:before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            bottom: 10px;
+            left: 10px;
+            border: 1px solid var(--border-color);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+        
+        .service-card:hover:before {
+            opacity: 1;
+        }
+        
+        .service-card i {
+            font-size: 36px;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 15px;
+            display: inline-block;
+        }
+        
+        .service-card h3:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 1px;
+            background: var(--secondary-color);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 100px 0;
+            background-color: white;
+            position: relative;
+        }
+        
+        .testimonial-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .testimonial {
+            background: var(--light-color);
+            padding: 40px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            display: none;
+            position: relative;
+        }
+        
+        .testimonial:before {
+            content: '"';
+            font-family: Georgia, serif;
+            font-size: 80px;
+            color: var(--secondary-color);
+            opacity: 0.3;
+            position: absolute;
+            top: 0;
+            left: 20px;
+            line-height: 1;
+        }
+        
+        .testimonial.active {
+            display: block;
+        }
+        
+        .testimonial p {
+            font-size: 18px;
+            font-style: italic;
+            color: var(--text-color);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            font-weight: normal;
+            color: var(--secondary-color);
+            font-family: var(--font-secondary);
+            letter-spacing: 1px;
+        }
+        
+        .testimonial-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .testimonial-nav button {
+            background: none;
+            border: 1px solid var(--border-color);
+            font-size: 18px;
+            color: var(--secondary-color);
+            cursor: pointer;
+            margin: 0 10px;
+            width: 40px;
+            height: 40px;
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-nav button:hover {
+            background: var(--secondary-color);
+            color: white;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background-color: var(--light-color);
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .contact-info {
+            background: var(--primary-color);
+            padding: 40px;
+            color: white;
+            border: 1px solid var(--border-color);
+        }
+        
+        .contact-info h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 15px;
+            color: white;
+            font-weight: normal;
+        }
+        
+        .contact-info h3:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 1px;
+            background: var(--secondary-color);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .contact-details {
+            margin-top: 30px;
+        }
+        
+        .contact-details div {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .contact-details i {
+            margin-right: 15px;
+            color: var(--accent-color);
+            font-size: 20px;
+            width: 20px;
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .contact-form h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 15px;
+            font-weight: normal;
+        }
+        
+        .contact-form h3:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 1px;
+            background: var(--secondary-color);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            background-color: var(--light-color);
+            font-family: var(--font-primary);
+        }
+        
+        .form-control:focus {
+            border-color: var(--secondary-color);
+            outline: none;
+        }
+        
+        textarea.form-control {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: #aaa;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            color: white;
+            font-size: 22px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 15px;
+            font-weight: normal;
+            letter-spacing: 1px;
+        }
+        
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 1px;
+            background: var(--secondary-color);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 15px;
+        }
+        
+        .footer-links li:before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+        }
+        
+        .footer-links a {
+            color: #aaa;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-right: 10px;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-style: italic;
+        }
+        
+        /* Vintage decorative elements */
+        .vintage-divider {
+            height: 5px;
+            background-image: url("data:image/svg+xml,%3Csvg width='80' height='5' viewBox='0 0 80 5' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 2.5C0 1.12 1.12 0 2.5 0H20v5H2.5C1.12 5 0 3.88 0 2.5zM30 0h20v5H30zM60 0h17.5c1.38 0 2.5 1.12 2.5 2.5S78.88 5 77.5 5H60V0z' fill='%238b7d65' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
+            margin: 40px auto;
+            width: 200px;
+        }
+        
+        .ornament {
+            text-align: center;
+            font-size: 20px;
+            color: var(--secondary-color);
+            margin: 20px 0;
+        }
+        
+        .ornament span {
+            display: inline-block;
+            padding: 0 20px;
+            position: relative;
+        }
+        
+        .ornament span:before, .ornament span:after {
+            content: "✦";
+            position: absolute;
+            top: 0;
+        }
+        
+        .ornament span:before {
+            left: 0;
+        }
+        
+        .ornament span:after {
+            right: 0;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--light-color);
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                border-bottom: 1px solid var(--border-color);
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .section-title h2 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">Ekaya <span>Legal</span></a>
+            <button class="mobile-menu-btn">☰</button>
+            <nav>
+                <ul id="menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>Bespoke Legal Services for Your Unique Needs</h1>
+            <div class="decorative-border"></div>
+            <p>At Ekaya Legal, we believe in being proactive rather than reactive to meet the needs of our clients.</p>
+            <a href="#contact" class="btn">Contact Us Today</a>
+        </div>
+    </section>
+    
+    <div class="ornament"><span>Established Excellence</span></div>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Ekaya Legal</h2>
+                <p>A tradition of excellence in legal representation</p>
+            </div>
+            <div class="about-content">
+                <div class="about-card">
+                    <i>🏢</i>
+                    <h3>Our Firm</h3>
+                    <p>Ekaya Legal is a boutique law firm dedicated to providing bespoke legal services for both retail and commercial clients. We bring together experienced attorneys with specialized knowledge across various practice areas.</p>
+                </div>
+                <div class="about-card">
+                    <i>🔍</i>
+                    <h3>Our Approach</h3>
+                    <p>We believe in being there for you right throughout the way as a turn key specialist. Our proactive approach anticipates legal challenges before they arise, saving you time, money, and stress.</p>
+                </div>
+                <div class="about-card">
+                    <i>🤝</i>
+                    <h3>Our Promise</h3>
+                    <p>We commit to personalized attention, clear communication, and practical solutions tailored to your specific needs. Your success is our success, and we work tirelessly to achieve the best possible outcomes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div class="vintage-divider"></div>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>Comprehensive legal expertise</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i>⚖️</i>
+                    <h3>Corporate Law</h3>
+                    <p>Business formation, contracts, mergers and acquisitions, corporate governance, and compliance solutions for businesses of all sizes.</p>
+                </div>
+                <div class="service-card">
+                    <i>📝</i>
+                    <h3>Contract Law</h3>
+                    <p>Drafting, reviewing, and negotiating contracts to protect your interests and ensure beneficial business relationships.</p>
+                </div>
+                <div class="service-card">
+                    <i>🏡</i>
+                    <h3>Real Estate Law</h3>
+                    <p>Residential and commercial property transactions, leasing agreements, property disputes, and land use matters.</p>
+                </div>
+                <div class="service-card">
+                    <i>👨‍👩‍👧‍👦</i>
+                    <h3>Family Law</h3>
+                    <p>Divorce, child custody, adoption, prenuptial agreements, and other family matters handled with sensitivity and care.</p>
+                </div>
+                <div class="service-card">
+                    <i>📊</i>
+                    <h3>Tax Law</h3>
+                    <p>Tax planning, compliance, dispute resolution, and representation before tax authorities for individuals and businesses.</p>
+                </div>
+                <div class="service-card">
+                    <i>💼</i>
+                    <h3>Employment Law</h3>
+                    <p>Employment contracts, workplace policies, discrimination claims, and labor disputes for both employers and employees.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div class="ornament"><span>Client Satisfaction</span></div>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Client Testimonials</h2>
+                <p>The voice of experience</p>
+            </div>
+            <div class="testimonial-container">
+                <div class="testimonial active">
+                    <p>"Ekaya Legal provided excellent guidance throughout our company's merger process. Their proactive approach helped us anticipate and address potential issues before they became problems. Their expertise was invaluable."</p>
+                    <div class="testimonial-author">- Michael Johnson, CEO of Johnson Enterprises</div>
+                </div>
+                <div class="testimonial">
+                    <p>"I was impressed by the personal attention and care I received from Ekaya Legal during my real estate transaction. They were always available to answer my questions and made a complex process feel manageable."</p>
+                    <div class="testimonial-author">- Sarah Thompson, Homeowner</div>
+                </div>
+                <div class="testimonial">
+                    <p>"The team at Ekaya Legal has been our trusted advisor for over five years. Their thorough understanding of our business needs and proactive legal strategies have been key to our growth and success."</p>
+                    <div class="testimonial-author">- David Chen, Small Business Owner</div>
+                </div>
+                <div class="testimonial-nav">
+                    <button id="prev-testimonial">❮</button>
+                    <button id="next-testimonial">❯</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div class="vintage-divider"></div>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>We're at your service</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <p>We're here to help with your legal needs. Reach out to us through any of the following methods or fill out the contact form.</p>
+                    <div class="contact-details">
+                        <div>
+                            <i>📍</i>
+                            <span>123 Legal Avenue, Suite 500<br>Business District, City, 12345</span>
+                        </div>
+                        <div>
+                            <i>📞</i>
+                            <span>+1 (555) 123-4567</span>
+                        </div>
+                        <div>
+                            <i>✉️</i>
+                            <span>info@ekayalegal.com</span>
+                        </div>
+                        <div>
+                            <i>🕒</i>
+                            <span>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 10:00 AM - 2:00 PM<br>Sunday: Closed</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Send Us A Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" class="form-control" id="phone" placeholder="Your Phone">
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" id="service">
+                                <option value="" disabled selected>Select Service</option>
+                                <option value="corporate">Corporate Law</option>
+                                <option value="contract">Contract Law</option>
+                                <option value="realestate">Real Estate Law</option>
+                                <option value="family">Family Law</option>
+                                <option value="tax">Tax Law</option>
+                                <option value="employment">Employment Law</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" id="message" placeholder="Your Message" required></textarea>
+                        </div>
