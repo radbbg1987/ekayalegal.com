@@ -775,7 +775,7 @@
     <header>
         <div class="container header-content">
             <a href="#" class="logo">Ekaya <span>Legal</span></a>
-            <button class="mobile-menu-btn">☰</button>
+            <button class="mobile-menu-btn" onclick="showNavigation()">☰</button>
             <nav>
                 <ul id="menu">
                     <li><a href="#home">Home</a></li>
@@ -995,4 +995,17 @@
         </div>
     </footer>
 
+    <script>
+        /* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
+        function showNavigation() {
+            const menu = document.getElementById("menu");
+            if (menu.style.display === "block") {
+                menu.style.display = "none";
+            } else {
+                menu.style.display = "block";
+            }
+        }
+    </script>
+
 </body>
+</html>
